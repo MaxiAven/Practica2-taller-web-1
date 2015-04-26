@@ -2,47 +2,43 @@ package ar.edu.tallerweb.cuenta;
 
 public class Cuenta {
 	
-	int deposito;
-	int saldo;
-	int extraccion;
+	float deposito;
+	float extraccion;
+	float saldo;
 	
-	public void saldo(){
-		
-		System.out.println("Su saldo actual es de $"+this.saldo+" pesos");
-		
-	}
-	
-	
-	public int depositar(int deposito){
+	public Cuenta(float deposito, float extraccion){
 		
 		this.deposito = deposito;
-		if(this.deposito<0)
-		{
-			System.out.println("Error al cargar el deposito");
-		}else{
-			
-			this.saldo+=deposito;
-		}
-		return this.saldo;
-		
+		this.extraccion = extraccion;
+		this.saldo=0;
 	}
 	
-public int extraer(int extraccion){
+	public float depositar(){
 		
-		this.extraccion = extraccion;
-		if(this.extraccion<0)
+		if(this.deposito>0)
 		{
-			System.out.println("Error al extraer su dinero");
-		}else
-			if(this.extraccion>this.saldo)
-			{
-				System.out.println("No tiene saldo para extraer");
-			}else{
+			this.saldo = this.saldo+this.deposito;
 			
-				this.saldo-=extraccion;
-			}
+		}
 		return this.saldo;
-		
+			
 	}
+	
+
+	public float extraer(){
+			
+			
+			if(this.extraccion<0)
+			{
+				this.saldo = 0;
+			}else
+				if(this.extraccion<this.saldo)
+				{
+				
+					this.saldo-=extraccion;
+				}
+			return this.saldo;
+			
+		}
 
 }
